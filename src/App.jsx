@@ -1,12 +1,20 @@
-import ImageSection from "./components/ImageSection.jsx";
-import FormSection from "./components/FormSection.jsx";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import RegistrationPage from './pages/RegistrationPage';
 
 function App() {
   return (
-    <div className="container">
-      <ImageSection />
-      <FormSection />
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path='/'
+          element={<Navigate to='/registro/1' />}
+        />
+        <Route
+          path='/registro/:step'
+          element={<RegistrationPage />}
+        />
+      </Routes>
+    </Router>
   );
 }
 

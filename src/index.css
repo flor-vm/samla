@@ -1,125 +1,322 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
+#root {
+  min-height: 100vh;
+  overflow-y: auto;
+  background-color: #0c40a6;
+  color: rgb(20, 6, 103);
+  font-family: 'Roboto', serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: white;
-  color: black;
-  min-height: 100vh;
 }
 
-h1 {
-  font-size: 24px;
-  font-weight: 500;
-}
-
+/* ------ CONTAINER PRINCIPAL ------ */
 .container {
   display: flex;
+  min-width: 430px;
+  max-width: 1440px;
+  width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
+/* ------ SECCIÓN DE IMAGEN ------ */
 .image-section {
   position: relative;
-  width: 50%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
   background: linear-gradient(217.64deg, #006dff -5.84%, #5038ed 106.73%);
-  overflow: hidden;
 }
 
 .image-section::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background: url("./assets/background.png");
+  background: url('./assets/background.png');
   opacity: 0.1;
   pointer-events: none;
 }
 
 .image {
   position: relative;
+  max-width: 559px;
+  min-width: 331px;
+  object-fit: cover;
   border-radius: 24px;
   margin: 142px 85px;
-  width: 390px;
+  max-height: 740px;
+  min-height: 438px;
 }
 
+/* ------ SECCIÓN DEL FORMULARIO ------ */
+
 .form-section {
-  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 112px;
+  justify-content: flex-start;
+  flex: 1;
+  min-height: 100vh;
   background-color: white;
+  padding: 0px 100px 0px 100px;
 }
 
 .logo {
   width: 129px;
+  margin-bottom: 20px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
   gap: 24px;
+  margin: 135px auto 0;
 }
 
-.label {
+h1 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.0025em;
+}
+
+label {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.005em;
-  color: #101828;
-  padding-bottom: 6px;
-  display: block;
+}
+
+label.error {
+  color: #b32318;
+}
+
+.error-helper {
+  color: #b32318;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 16px;
+}
+
+/* ------ BOTÓN ------ */
+.form-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 8px 12px;
+  margin-top: 26px;
+  border: none;
+  border-radius: 8px;
+  background: #ff5c00;
+  color: white;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.0025em;
+  cursor: pointer;
+}
+
+/* ------ INPUTS ------ */
+.input-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .input {
-  font-size: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   padding: 12px 12px 12px 16px;
-  gap: 10px;
-  width: 90%;
   height: 48px;
   border: 1px solid #98a2b3;
   border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
 }
 
-.input:focus {
+.input:focus,
+.input.error:focus {
   border: 2px solid #195dfa;
-  filter: drop-shadow(0px 2px 2.1px #195dfa);
+  filter: drop-shadow(0px 1px 3.1px #195dfa);
   outline: none;
+}
+
+.input.error {
+  border: 1px solid #b32318;
+}
+
+/* ------ PHONE INPUT ------ */
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #aab2bd;
+  border-radius: 8px;
+}
+
+.phone-input-container:focus-within {
+  border: 2px solid #195dfa !important;
+  filter: drop-shadow(0px 1px 3.1px #195dfa);
+  outline: none;
+}
+
+.phone-input-container.error {
+  border: 1px solid #b32318;
 }
 
 .phone-input {
   flex: 1;
-  height: 48px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding: 12px 12px 12px 16px;
-  border-radius: 0 8px 8px 0;
   width: 90%;
+  height: 48px;
+  padding: 12px 12px 12px 16px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+  outline: none;
 }
 
-.phone-input-container {
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  border: 1px solid #aab2bd;
-  width: 90%;
+.react-international-phone-dial-code-preview.phone-input-dial-code {
+  color: #7a7a7a;
+  height: 48px;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+  outline: none;
 }
 
 button.react-international-phone-country-selector-button {
   height: 48px;
-  border-top: none;
-  border-bottom: none;
-  border-left: none;
-  border-radius: 8px 0 0 8px !important;
   padding: 0 8px;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 8px 0 0 8px !important;
+}
+
+/* ------ SELECT INPUT ------ */
+.custom-react-select__control {
+  border: 1px solid #98a2b3;
+  border-radius: 8px !important;
+  color: #667085;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+  height: 48px;
+}
+
+.custom-react-select__control:hover {
+  border: 1px solid #98a2b3;
+}
+
+.focus {
+  border: 2px solid #195dfa;
+  filter: drop-shadow(0px 1px 3.1px #195dfa);
+  outline: none;
+}
+
+.custom-react-select__menu {
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(70, 68, 68, 0.25);
+}
+
+.custom-react-select__option:hover {
+  background: #f2f4ff;
+}
+
+.custom-react-select__control.error {
+  border: 1px solid #b32318;
+}
+
+/* ------ ICONO SOBRE LA IMAGEN ------ */
+.icon-overlay {
+  position: absolute;
+  border-radius: 50%;
+  position: absolute;
+  width: 79px;
+  height: 79px;
+  left: 44px;
+  top: 381px;
+  background: #ffffff;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+}
+
+/* ------ RESPONSIVE DESIGN ------ */
+@media (max-width: 1024px) {
+  h1 {
+    text-align: center;
+  }
+
+  .logo {
+    align-self: center;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .image-section {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .form-section {
+    width: 100%;
+    padding: 0 60px;
+  }
+
+  .form {
+    margin: 40px 0;
+    max-width: 100%;
+  }
+
+  .icon-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-section {
+    width: 100%;
+    min-height: 606px;
+  }
+
+  .form-section {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .image {
+    max-width: 331px;
+  }
 }
