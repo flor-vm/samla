@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 24px;
+  margin: 135px auto 0;
+}
+
+.container .button {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  margin-top: 26px;
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    margin: 40px 0;
+    max-width: 100%;
+  }
+}

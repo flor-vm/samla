@@ -1,0 +1,10 @@
+.label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+}
+
+.error {
+  color: #b32318;
+}

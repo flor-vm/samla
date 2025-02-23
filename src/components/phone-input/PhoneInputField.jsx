@@ -2,10 +2,19 @@ import { Controller } from 'react-hook-form';
 import { PhoneInput } from 'react-international-phone';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import 'react-international-phone/style.css';
+import Label from '../label/Label';
+import ErrorHelper from '../error-helper/ErrorHelper';
+import styles from './PhoneInputField.module.css';
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 
-export default function PhoneInputField({ label, name, control, required = true }) {
+export default function PhoneInputField({
+  label,
+  name,
+  control,
+  rules,
+  required = false,
+}) {
   const isPhoneValid = (phone) => {
     try {
       const parsedPhone = phoneUtil.parseAndKeepRawInput(phone);
@@ -30,21 +39,29 @@ export default function PhoneInputField({ label, name, control, required = true 
             return true;
           }
         },
+        ...rules,
       }}
       render={({ field, fieldState: { error } }) => (
-        <div>
-          <label className={error ? 'error' : undefined}>{label}</label>
+        <div className={styles.customContainer}>
+          <Label
+            error={error}
+            label={label}
+          />
           <PhoneInput
             defaultCountry='cr'
             value={field.value || ''}
             onChange={(phone) => field.onChange(phone)}
-            className={`phone-input-container ${error ? 'error' : ''}`}
-            inputProps={{ className: 'phone-input' }}
+            className={`${styles.container} ${error ? styles.error : ''}`}
+            inputProps={{ className: styles.input }}
             disableDialCodeAndPrefix
             showDisabledDialCodeAndPrefix
-            dialCodePreviewStyleProps={{ className: 'phone-input-dial-code' }}
+            countrySelectorStyleProps={{
+              buttonClassName: styles.button,
+              dropdownStyleProps: { className: styles.dropdown },
+            }}
+            dialCodePreviewStyleProps={{ className: styles.dialCode }}
           />
-          {error && <span className='error-helper'>{error.message}</span>}
+          {error && <ErrorHelper message={error.message} />}
         </div>
       )}
     />

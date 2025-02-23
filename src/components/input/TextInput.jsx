@@ -1,4 +1,7 @@
 import { Controller } from 'react-hook-form';
+import Label from '../label/Label';
+import ErrorHelper from '../error-helper/ErrorHelper';
+import styles from './TextInput.module.css';
 
 export default function TextInput({
   label,
@@ -7,7 +10,7 @@ export default function TextInput({
   control,
   rules,
   type = 'text',
-  required = true,
+  required = false,
 }) {
   return (
     <Controller
@@ -15,7 +18,6 @@ export default function TextInput({
       defaultValue=''
       control={control}
       rules={{
-        ...rules,
         ...(required && { required: 'Completa este campo.' }),
         ...(type === 'email' && {
           pattern: {
@@ -23,17 +25,21 @@ export default function TextInput({
             message: 'Ingresa un correo válido.',
           },
         }),
+        ...rules,
       }}
       render={({ field, fieldState: { error } }) => (
-        <div className='input-container'>
-          <label className={error ? 'error' : undefined}>{label}</label>
+        <div className={styles.container}>
+          <Label
+            error={error}
+            label={label}
+          />
           <input
             {...field}
-            className={`input ${error ? 'error' : ''}`}
+            className={`${styles.input} ${error ? styles.error : ''}`}
             type={type}
             placeholder={placeholder}
           />
-          {error && <span className='error-helper'>{error.message}</span>}
+          {error && <ErrorHelper message={error.message} />}
         </div>
       )}
     />

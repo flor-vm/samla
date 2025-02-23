@@ -1,0 +1,89 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(217.64deg, #006dff -5.84%, #5038ed 106.73%);
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../../assets/background.png');
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.image {
+  position: relative;
+  max-width: 559px;
+  min-width: 331px;
+  object-fit: cover;
+  border-radius: 24px;
+  margin: 142px 85px;
+  max-height: 740px;
+  min-height: 438px;
+}
+
+.icon-overlay {
+  position: absolute;
+  border-radius: 50%;
+  position: absolute;
+  width: 79px;
+  height: 79px;
+  left: 44px;
+  top: 381px;
+  background: #ffffff;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+}
+
+.top-bar {
+  position: relative;
+  width: 100%;
+  height: 34px;
+  background: linear-gradient(217.64deg, #006dff -5.84%, #5038ed 106.73%);
+}
+
+.top-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../../assets/background.png');
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .icon-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    min-height: 606px;
+  }
+
+  .image {
+    max-width: 331px;
+  }
+}

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 129px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.icon {
+  width: 60px;
+  height: 60x;
+  margin-bottom: 20px;
+}
+
+.center {
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  h1,
+  .logo,
+  .icon {
+    align-self: center;
+  }
+}

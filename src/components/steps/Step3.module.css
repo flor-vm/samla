@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 100px auto 0;
+}
+
+.button {
+  max-width: 380px;
+  width: 100%;
+  align-self: center;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    margin: 40px 0;
+    max-width: 100%;
+  }
+}

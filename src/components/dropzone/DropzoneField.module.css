@@ -1,0 +1,72 @@
+.dropzone {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px dashed #1849d6;
+  border-radius: 8px;
+  height: 354px;
+  width: 548px;
+}
+
+.dropzone:hover {
+  border-color: #0056b3;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+.dropzone p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0b0b0b;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #6d6d6d;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 10px;
+  background: #f2f4f7;
+  border-radius: 4px;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.005em;
+  color: #1d2939;
+}
+
+@media (max-width: 1024px) {
+  .dropzone {
+    margin: 0 auto;
+    width: 100%;
+  }
+}

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import RegistrationPage from './pages/RegistrationPage';
+import RegistrationPage from './pages/registration-page/RegistrationPage';
 
 function App() {
   return (

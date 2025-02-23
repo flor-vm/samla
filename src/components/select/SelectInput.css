@@ -1,0 +1,36 @@
+.custom-select-container:focus-within label {
+  color: #195dfa;
+}
+
+.custom-select__control {
+  border: 1px solid #98a2b3 !important;
+  border-radius: 8px !important;
+  color: #667085;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+  height: 48px;
+}
+
+.custom-select__control.focus {
+  border: 2px solid #195dfa !important;
+  box-shadow: 0px 1px 3.1px #195dfa !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.custom-select__control.error {
+  border: 1px solid #b32318 !important;
+}
+
+.custom-select__menu {
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(70, 68, 68, 0.25);
+}
+
+.custom-select__option--is-focused,
+.custom-select__option--is-selected {
+  background-color: #f2f4ff !important;
+  color: black !important;
+}
