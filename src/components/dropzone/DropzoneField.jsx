@@ -16,7 +16,13 @@ export default function DropzoneField({
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop: (acceptedFiles) => {
+    accept: {
+      'image/*': [] // Solo imágenes
+    },
+    onDrop: (acceptedFiles, rejectedFiles) => {
+      if (rejectedFiles.length > 0) {
+        alert('Solo se permiten imagenes.');
+      }
       setValue(name, acceptedFiles);
       setUploadedFiles(acceptedFiles);
     },
@@ -51,7 +57,7 @@ export default function DropzoneField({
               <li
                 key={file.name}
                 className={styles.fileItem}>
-                {file.name} {/* Muestra el nombre del archivo subido */}
+                {file.name} 
               </li>
             ))}
           </ul>
