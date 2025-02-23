@@ -14,7 +14,6 @@
 }
 
 #root {
-  min-width: 430px;
   min-height: 100vh;
   overflow-y: auto;
   background-color: #0c40a6;

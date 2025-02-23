@@ -19,12 +19,11 @@
 .image {
   position: relative;
   max-width: 559px;
-  min-width: 331px;
+  min-width: 280px;
   object-fit: cover;
   border-radius: 24px;
   margin: 142px 85px;
   max-height: 740px;
-  min-height: 438px;
 }
 
 .icon-overlay {

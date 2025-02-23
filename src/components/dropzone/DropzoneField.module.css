@@ -64,6 +64,22 @@
   color: #1d2939;
 }
 
+.uploadedFiles {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.fileList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.fileItem {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 4px 0;
+}
+
 @media (max-width: 1024px) {
   .dropzone {
     margin: 0 auto;
