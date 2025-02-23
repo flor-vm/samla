@@ -10,7 +10,7 @@ export default function DropzoneField({
   control,
   rules,
   setValue,
-  required = true,
+  required = false,
 }) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: (acceptedFiles) => {

@@ -14,6 +14,7 @@ export default function Step1({ control, nextStep }) {
         name='nombres'
         placeholder='Ingresar nombres'
         control={control}
+        required
       />
       <TextInput
         label='Apellidos'
