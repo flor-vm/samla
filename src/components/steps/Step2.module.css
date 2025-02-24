@@ -12,7 +12,7 @@
   flex: 1;
   flex-direction: column;
   gap: 24px;
-  margin: 195px auto 0;
+  margin: 150px auto 0;
 }
 
 .form-left {
@@ -28,7 +28,7 @@
 .button-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 108px;
+  margin-top: 60px;
   gap: 14px;
 }
 

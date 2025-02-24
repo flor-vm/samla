@@ -15,16 +15,34 @@ export default function DropzoneField({
 }) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
-      'image/*': [] // Solo imágenes
+      'image/*': [],
     },
-    onDrop: (acceptedFiles, rejectedFiles) => {
+    onDrop: async (acceptedFiles, rejectedFiles) => {
       if (rejectedFiles.length > 0) {
-        alert('Solo se permiten imagenes.');
+        alert('Solo se permiten imágenes.');
+        return;
       }
-      setValue(name, acceptedFiles);
-      setUploadedFiles(acceptedFiles);
+
+      // Convertir a base64
+      const base64Files = await Promise.all(
+        acceptedFiles.map(async (file) => ({
+          name: file.name,
+          image: await toBase64(file),
+        }))
+      );
+
+      setValue(name, base64Files);
+      setUploadedFiles(base64Files);
     },
   });
 
@@ -54,10 +72,8 @@ export default function DropzoneField({
           <h2>Archivos subidos:</h2>
           <ul className={styles.fileList}>
             {uploadedFiles.map((file) => (
-              <li
-                key={file.name}
-                className={styles.fileItem}>
-                {file.name} 
+              <li key={file.name} className={styles.fileItem}>
+                {file.name}
               </li>
             ))}
           </ul>

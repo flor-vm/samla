@@ -15,7 +15,6 @@ export default function Step3({ control, setValue }) {
         name='selfie'
         message='Sonríe y asegúrate de tener buena iluminación.'
         control={control}
-        rules={{ required: 'Debes tomar una selfie' }}
         setValue={setValue}
       />
       <Button

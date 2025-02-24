@@ -8,9 +8,9 @@ export default function CameraCapture({ name, message, control, rules, setValue 
   const [stream, setStream] = useState(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const previewCanvasRef = useRef(null); 
+  const previewCanvasRef = useRef(null);
 
-  useEffect(() => { 
+  useEffect(() => {
     // Carga face-api models
     const loadModels = async () => {
       await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
@@ -22,23 +22,30 @@ export default function CameraCapture({ name, message, control, rules, setValue 
     loadModels().then(() => {
       navigator.mediaDevices.getUserMedia({ video: true }).then((mediaStream) => {
         setStream(mediaStream);
-        videoRef.current.srcObject = mediaStream;
+        if (videoRef.current) {
+          videoRef.current.srcObject = mediaStream;
+        }
 
         // Canvas de la vista previa en espejo
         const updatePreview = () => {
           const previewCanvas = previewCanvasRef.current;
+          const video = videoRef.current;
+          if (!previewCanvas || !video) return;
+
           const context = previewCanvas.getContext('2d');
-          previewCanvas.width = videoRef.current.videoWidth;
-          previewCanvas.height = videoRef.current.videoHeight;
+          if (!context) return;
+
+          previewCanvas.width = video.videoWidth || 640;
+          previewCanvas.height = video.videoHeight || 480;
 
           // Modo espejo
           context.translate(previewCanvas.width, 0);
           context.scale(-1, 1);
-          context.drawImage(videoRef.current, 0, 0, previewCanvas.width, previewCanvas.height);
-          context.setTransform(1, 0, 0, 1, 0, 0); 
+          context.drawImage(video, 0, 0, previewCanvas.width, previewCanvas.height);
+          context.setTransform(1, 0, 0, 1, 0, 0);
         };
 
-        const interval = setInterval(updatePreview, 100); 
+        const interval = setInterval(updatePreview, 100);
 
         return () => clearInterval(interval);
       });
@@ -59,15 +66,15 @@ export default function CameraCapture({ name, message, control, rules, setValue 
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
       const imageDataUrl = canvas.toDataURL('image/png');
-      setSelfie(imageDataUrl);
-      setValue(name, imageDataUrl);
-
       // Detectar cara
       const detections = await faceapi
         .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks();
       if (detections.length === 0) {
         alert('No se detectó ningún rostro. Por favor, intenta nuevamente.');
+      } else {
+        setSelfie(imageDataUrl);
+        setValue(name, imageDataUrl);
       }
     }
   };
@@ -109,10 +116,11 @@ export default function CameraCapture({ name, message, control, rules, setValue 
                 ref={videoRef}
                 autoPlay
                 playsInline
-                style={{ display: 'none' }} 
+                style={{ visibility: 'hidden', width: 0, height: 0 }}
               />
               <canvas
                 ref={previewCanvasRef}
+                style={{ display: 'block' }}
               />
               <button
                 type='button'

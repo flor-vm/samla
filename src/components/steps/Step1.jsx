@@ -10,15 +10,15 @@ export default function Step1({ control, nextStep }) {
     <div className={styles.container}>
       <Header title={'Registro'} />
       <TextInput
-        label='Nombres'
-        name='nombres'
-        placeholder='Ingresar nombres'
+        label='Nombre'
+        name='name'
+        placeholder='Ingresar nombre'
         control={control}
         required
       />
       <TextInput
         label='Apellidos'
-        name='apellidos'
+        name='last_name'
         placeholder='Ingresar apellidos'
         control={control}
       />
@@ -31,12 +31,12 @@ export default function Step1({ control, nextStep }) {
       />
       <PhoneInputField
         label='Teléfono'
-        name='telefono'
+        name='phone'
         control={control}
       />
       <SelectInput
         label='Tipo de identificación'
-        name='tipo_identificacion'
+        name='document_type'
         control={control}
         options={[
           { value: 'dni', label: 'Cédula de identidad' },
@@ -46,7 +46,7 @@ export default function Step1({ control, nextStep }) {
       />
       <TextInput
         label='Número de identificación'
-        name='identificacion'
+        name='document_number'
         placeholder='0000-0'
         control={control}
         type='text'
