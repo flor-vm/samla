@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Table from "../../components/table/table";
-import Modal from "../../components/modal/modal";
-import { useFormContext } from "../../context/FormContext"; // Importa el contexto
+import Table from "../../components/table/Table.jsx";
+import Modal from "../../components/modal/Modal.jsx";
+import { useFormContext } from "../../context/FormContext";
 import SideBanner from "../../components/side-banner/SideBanner.jsx";
 import styles from './RegistrationHistory.module.css';
 
